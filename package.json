@@ -1,0 +1,23 @@
+{
+  "name": "hobbyblog",
+  "version": "0.0.1",
+  "description": "Hobby Blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Coldstripe/HobbyBlog.git"
+  },
+  "author": "Cameron Thacker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Coldstripe/HobbyBlog/issues"
+  },
+  "homepage": "https://github.com/Coldstripe/HobbyBlog#readme",
+  "dependencies": {
+    "firebase": "^9.23.0",
+    "firebaseui": "^6.0.2"
+  }
+}
