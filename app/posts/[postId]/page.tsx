@@ -3,7 +3,6 @@ import { getPostData, getSortedPostsData } from "@/lib/posts"
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation"
-import { useSmartcrop } from "use-smartcrop";
 
 export function generateStaticParams(){
     const posts = getSortedPostsData(); //deduped
@@ -66,7 +65,12 @@ export default async function Post({ params }: { params: {postId: string}}) {
             <article>
                 <section dangerouslySetInnerHTML={{ __html: contentHtml}}></section>
             </article>
-            <Link href="/" className="no-underline"><div className="sticky bottom-1 z-10 dark:bg-slate-400/90 dark:hover:bg-slate-300 bg-stone-500 hover:bg-stone-600 rounded text-center my-5 drop-shadow-sm">Back to home</div></Link>
+            <Link href="/" className="no-underline">
+                <div className="sticky bottom-1 z-10 dark:bg-slate-400/90 dark:hover:bg-slate-300 
+                bg-stone-500/90 hover:bg-stone-600 hover:text-white rounded text-center my-5 drop-shadow-sm">
+                    Back to home
+                </div>
+            </Link>
             
         </main>
     )
