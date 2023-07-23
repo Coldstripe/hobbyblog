@@ -19,7 +19,7 @@ export default function ListItem({post}: Props) {
         
             <Link className="underline hover:text-black/70 hover:text-white hover:drop-shadow-xl" href={`/posts/${id}`}>
                 <div className="text-center relative">
-                    {cropped && <img src={cropped}/>}
+                    {cropped && <Image alt={title} src={cropped}/>}
                     {cropped && <div className="top-2 left-4 absolute">{title}</div>}
                 </div>
             </Link>
