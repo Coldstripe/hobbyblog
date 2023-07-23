@@ -1,7 +1,9 @@
 import getFormattedDate from "@/lib/getFormattedDate";
 import { getPostData, getSortedPostsData } from "@/lib/posts"
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation"
+import { useSmartcrop } from "use-smartcrop";
 
 export function generateStaticParams(){
     const posts = getSortedPostsData(); //deduped
@@ -38,23 +40,34 @@ export default async function Post({ params }: { params: {postId: string}}) {
         return notFound()
     }
 
-    const {title, date, contentHtml} = await getPostData(postId);
+    const {title, date, headerImg, contentHtml} = await getPostData(postId);
     const pubDate = getFormattedDate(date);
+    const w = 600;
+    const h = 200;
+    const src = headerImg;
 
     return (
         <main className="px-6 prose prose-xl prose-slate dark:prose-invert mx-auto">
-            <h1 className="text-3xl mt-4 mb-0">
+            <h2 className="text-3xl mt-4 mb-0">
                 {title}
-            </h1>
+            </h2>
             <p className="mt-0">
                 {pubDate}
             </p>
+            <h1>
+                <Image
+                    src={src} 
+                    alt={title}
+                    className="w-full my-0 drop-shadow-md"
+                    width={w}
+                    height={h}
+                />
+            </h1>
             <article>
                 <section dangerouslySetInnerHTML={{ __html: contentHtml}}></section>
-                <p>
-                    <Link href="/">⬅️Back to home</Link>
-                </p>
             </article>
+            <Link href="/" className="no-underline"><div className="sticky bottom-1 z-10 dark:bg-slate-400/90 dark:hover:bg-slate-300 bg-stone-500 hover:bg-stone-600 rounded text-center my-5 drop-shadow-sm">Back to home</div></Link>
+            
         </main>
     )
 }
