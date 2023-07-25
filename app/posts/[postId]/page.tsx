@@ -1,8 +1,8 @@
 import getFormattedDate from "@/lib/getFormattedDate";
 import { getPostData, getSortedPostsData } from "@/lib/posts"
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation"
+import ExportedImage from "next-image-export-optimizer";
 
 export function generateStaticParams(){
     const posts = getSortedPostsData(); //deduped
@@ -39,10 +39,8 @@ export default async function Post({ params }: { params: {postId: string}}) {
         return notFound()
     }
 
-    const {title, date, headerImg, contentHtml} = await getPostData(postId);
+    const {title, date, description, headerImg, tags, contentHtml} = await getPostData(postId);
     const pubDate = getFormattedDate(date);
-    const w = 600;
-    const h = 200;
     const src = headerImg;
 
     return (
@@ -54,20 +52,21 @@ export default async function Post({ params }: { params: {postId: string}}) {
                 {pubDate}
             </p>
             <h1>
-                <Image
+                <ExportedImage
                     src={src} 
                     alt={title}
-                    className="w-full my-0 drop-shadow-md"
-                    width={w}
-                    height={h}
+                    className="w-full my-0 drop-shadow-md rounded-lg"
+                    width={200}
+                    height={200}
                 />
             </h1>
             <article>
                 <section dangerouslySetInnerHTML={{ __html: contentHtml}}></section>
             </article>
+            {tags && <hr className="mt-0 mb-4"/>}
+            {tags && <footer className="inline-flex">Tags:&nbsp;<div className="font-thin">{tags.join(', ')}</div></footer>}
             <Link href="/" className="no-underline">
-                <div className="sticky bottom-1 z-10 dark:bg-slate-400/90 dark:hover:bg-slate-300 
-                bg-stone-500/90 hover:bg-stone-600 hover:text-white rounded text-center my-5 drop-shadow-sm">
+                <div className="sticky bottom-1 z-10 dark:bg-slate-400/90 dark:hover:bg-slate-300 bg-stone-500/90 hover:bg-stone-600 hover:text-white rounded text-center my-5 drop-shadow-sm">
                     Back to home
                 </div>
             </Link>

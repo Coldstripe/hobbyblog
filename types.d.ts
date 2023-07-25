@@ -2,5 +2,8 @@ type BlogPost = {
     id: string,
     title: string,
     date: string,
-    headerImg: string 
+    headerImg: string,
+    tags: string[],
+    isPinned: boolean,
+    description: string
 }

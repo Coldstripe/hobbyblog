@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="en">
       <body className= 'grid bg-stone-200 dark:bg-slate-800'>
         <Navbar/>
-        <ProfilePic/>
+        {/* <ProfilePic/> */}
         {children}
       </body>
     </html>
