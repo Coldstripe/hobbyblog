@@ -78,11 +78,14 @@ export default function Navbar() {
           alt="Header Image"
           priority={true}
           width={4000}
-          height={300}
-          className="w-full h-full"
+          height={500}
+          className="w-full"
+          sizes="100vw"
           placeholder="blur"
           blurDataURL="/images/placeholder.png"
+          quality={100}
           src={"/images/siteheader.png"}
+          
         />
         <hr className="border-neutral-900 dark:border-white/90"/>
         <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed">

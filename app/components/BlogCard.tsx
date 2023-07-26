@@ -21,6 +21,7 @@ export default function BlogCard(props: Props) {
           alt={props.title}
           width={200}
           height={200}
+          sizes="(min-width: 460px) 384px, 90vw"
         />
       )}
       {props.isPinned && (

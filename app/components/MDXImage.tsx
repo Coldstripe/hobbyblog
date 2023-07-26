@@ -16,6 +16,7 @@ export default function MDXImage({ src, alt }: Props) {
         height={500}
         placeholder="blur"
         quality={100}
+        sizes="(min-width: 740px) 674px, calc(95.48vw - 18px)"
         blurDataURL="/images/placeholder.png"
       />
     </div>
