@@ -1,38 +1,41 @@
-import ExportedImage from "next-image-export-optimizer";
 import { FaMapPin } from "react-icons/fa";
+import Image from "next/image";
+import BlogTags from "./BlogTags";
 
 type Props = {
   title: string;
   date: string;
-  headerImg: string;
+  tags: string[];
+  cardImg: string;
   isPinned: boolean;
   description: string;
 };
 export default function BlogCard(props: Props) {
   return (
-    <div className="relative transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 flex flex-col rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 md:max-w-xl md:flex-row">
-      <ExportedImage
-        className="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-        width={200}
-        height={200}
-        src={props.headerImg}
-        alt={props.title}
-      />
+    <div className="relative max-w-sm bg-gray-100 dark:bg-stone-500 text-neutral-900 dark:text-white/90 rounded overflow-hidden shadow-lg">
+      {props.cardImg && (
+        <Image
+          className="w-full mt-0 mb-0"
+          src={props.cardImg}
+          alt={props.title}
+          width={200}
+          height={200}
+          quality={100}
+          sizes="10vw"
+        />
+      )}
       {props.isPinned && (
-        <div className="top-2 right-2 absolute">
-          <FaMapPin title="Pinned" />
+        <div className="absolute right-5 top-5 animate-pulse" title="Pinned">
+          <FaMapPin />
         </div>
       )}
-      <div className="flex flex-col justify-start p-6">
-        <h5 className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
-          {props.title}
-        </h5>
-        <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-          {props.description}
-        </p>
-        <p className="text-xs text-neutral-500 dark:text-neutral-300">
-          {props.date}
-        </p>
+      <div className="px-6 py-4">
+        <div className="font-bold text-xl mb-2">{props.title}</div>
+        {props.description && <p className="text-gray-700 dark:text-gray-200 text-base font-medium">{props.description}</p>}
+      </div>
+      <div className="px-6 pt-4 pb-2">
+        <hr className="mb-3 mt-0 dark:border-gray-200/90"/>
+        <BlogTags tags={props.tags} />
       </div>
     </div>
   );

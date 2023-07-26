@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://coldstripe-d86c6.web.app/
+
+# Sitemaps
+Sitemap: https://coldstripe-d86c6.web.app/sitemap.xml

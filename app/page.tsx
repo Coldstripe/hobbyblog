@@ -1,11 +1,12 @@
-import Posts from './components/Posts'
+import Posts from "./components/Posts";
+import ProfilePic from "./components/ProfilePic";
+
+export const revalidate = 86400;
 
 export default function Home() {
   return (
-    <main className='px-6 mx-auto'>
-      <div className='justify-center mx-auto mt-5 text-4xl text-neutral-900 content-center dark:text-white/90'></div>
-      <Posts/>
-      <div className='prose justify-center text-sm '></div>
-    </main>
-  )
+    <div className="mx-auto">
+      <Posts />
+    </div>
+  );
 }

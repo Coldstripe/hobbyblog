@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Grenze Gotisch";
+    src: url("/font/GrenzeGotisch-VariableFont_wght.ttf");
+  }
+
 @layer components {
   .text-stroke {
     -webkit-text-stroke: 1px rgba(0, 0, 0, 0.25);

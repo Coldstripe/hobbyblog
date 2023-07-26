@@ -1,11 +1,12 @@
-import ExportedImage from "next-image-export-optimizer";
 import Link from "next/link";
 import { FaInstagram } from "react-icons/fa";
+import Image from "next/image";
+
 export default function Navbar() {
   return (
     <header>
       <nav
-        className="relative flex w-full items-center justify-between bg-white py-2 text-neutral-600 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 dark:text-neutral-200 md:flex-wrap md:justify-start"
+        className="sticky z-20 top-0 flex w-full items-center justify-between bg-white py-2 text-neutral-600 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 dark:text-neutral-200 md:flex-wrap md:justify-start"
         data-te-navbar-ref
       >
         <div className="flex w-full flex-wrap items-center justify-between px-3">
@@ -52,7 +53,10 @@ export default function Navbar() {
                   About
                 </Link>
               </li>
-              <li className="scale-125 self-center lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+              <li
+                className="scale-125 self-center lg:mb-0 lg:pr-2"
+                data-te-nav-item-ref
+              >
                 <Link
                   className="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white lg:p-2 [&.active]:text-black/90"
                   href="https://www.instagram.com/coldstripe_"
@@ -69,15 +73,16 @@ export default function Navbar() {
       </nav>
 
       <div className="relative overflow-hidden bg-cover bg-no-repeat">
-        <ExportedImage
-          width={2560}
-          height={350}
+        <div></div>
+        <Image
           alt="Header Image"
           priority={true}
-          loading={"eager"}
-          src={"https://picsum.photos/2560/350"}
+          width={4000}
+          height={300}
+          className="w-full max-h-fit"
           placeholder="blur"
           blurDataURL="/images/placeholder.png"
+          src={"/images/siteheader.png"}
         />
         <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed">
           <div className="flex h-full items-center justify-center">

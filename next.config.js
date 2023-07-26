@@ -1,22 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export',
-    images: {
-        domains: ['picsum.photos'],
-        loader: "custom",
-        imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-        deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-        nextImageExportOptimizer: {
-          imageFolderPath: "public/images",
-          exportFolderPath: "out",
-          quality: 75,
-        },
-      },
-      transpilePackages: ["next-image-export-optimizer"],
-      env: {
-        storePicturesInWEBP: true,
-        generateAndUseBlurImages: true,
-      }
-}
+  images: {
+    domains: ["picsum.photos"],
+    unoptimized: false,
+  },
+  remotePatterns: [
+    {
+      protocol: "https",
+      hostname: "raw.githubusercontent.com",
+      port: "",
+      pathname: "/Coldstripe/blogposts/main/images/**",
+    },
+  ],
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

@@ -1,9 +1,15 @@
-type BlogPost = {
+type Meta = {
     id: string,
     title: string,
     date: string,
-    headerImg: string,
     tags: string[],
+    cardImg: string,
+    description: string,
     isPinned: boolean,
-    description: string
+    isHidden: boolean
+}
+
+type BlogPost = {
+    meta: Meta,
+    content: ReactElement<any, string | JSXElementConstructor<any>>,
 }
