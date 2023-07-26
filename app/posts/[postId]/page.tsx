@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import "highlight.js/styles/github-dark.css"; //node_modules/highlight.js/styles
 import Image from "next/image";
+import MDXImage from "@/app/components/MDXImage";
 
 export const revalidate = 86400;
 
@@ -48,29 +49,27 @@ export default async function Post({ params: { postId } }: Props) {
 
   const tags = meta.tags.map((tag, i) => (
     <Link key={i} href={`/tags/${tag}`}>
-      {tag}
+      {tag.replaceAll('_',' ')}
     </Link>
   ));
 
   return (
     <>
       <header>
-        <h2 className="text-3xl mt-4 mb-0">{meta.title}</h2>
-        <p className="mt-0">{pubDate}</p>
-        <p className="mt-0">{meta.description}</p>
-        <Image
+        <h2 className=" text-3xl mt-4 mb-0">{meta.title}</h2>
+        <p className="mt-0 mb-0">{pubDate}</p>
+        {meta.author && <sub className="mt-0">By {meta.author}</sub>}
+        <MDXImage
           src={meta.cardImg}
           alt={meta.title}
-          width={650}
-          height={650}
-          className="rounded-sm w-full"
         />
+        <p className="mt-0">{meta.description}</p>
       </header>
-      <hr className="my-1 dark:border-gray-200/90"/>
+      <hr className="my-1 border-neutral-900 dark:border-gray-200/90" />
       <article>{content}</article>
-      {tags && <hr className="mt-0 mb-4 dark:border-gray-200/90" />}
+      {tags && <hr className="mt-0 mb-4 border-neutral-900 dark:border-gray-200/90" />}
       {tags && (
-        <footer className="flex flex-row gap-4">Tags:&nbsp;{tags}</footer>
+        <footer className="flex flex-row gap-4 pb-4">Tags:&nbsp;{tags}</footer>
       )}
     </>
   );

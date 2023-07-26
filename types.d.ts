@@ -2,6 +2,7 @@ type Meta = {
     id: string,
     title: string,
     date: string,
+    author: string,
     tags: string[],
     cardImg: string,
     description: string,

@@ -1,33 +1,23 @@
-import Image from "next/image"
+import Image from "next/image";
 type Props = {
-    src: string,
-    alt: string,
-    width: number,
-    height: number,
-    className?: string,
-    priority?: boolean,
-    hidden?: boolean
-}
+  src: string;
+  alt: string;
+};
 
-export default function MDXImage({ src, alt, width, height, className, priority, hidden }: Props) {
 
-    const prty = priority ? true : false
-    const hdn = hidden ? true : false
-    const clssNme = className ? className : ''
-
-    return (
-        <div>
-            <Image
-                className={clssNme}
-                src={src}
-                alt={alt}
-                width={width}
-                height={height}
-                priority={prty}
-                hidden={hdn}
-                placeholder="blur"
-                blurDataURL="/images/placeholder.png"
-            />
-        </div>
-    )
+export default function MDXImage({ src, alt }: Props) {
+  return (
+    <div>
+      <Image
+        className="rounded w-full mb-2 transition ease-in-out delay-500 duration-100 hover:-translate-y-1 hover:scale-150"
+        src={src}
+        alt={alt}
+        width={500}
+        height={500}
+        placeholder="blur"
+        quality={100}
+        blurDataURL="/images/placeholder.png"
+      />
+    </div>
+  );
 }

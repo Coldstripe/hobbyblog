@@ -7,7 +7,7 @@ type Props = {
 };
 
 export default function ListItem({ post }: Props) {
-  const { id, title, date, tags, cardImg, isPinned, description } = post;
+  const { id, title, date, author, tags, cardImg, isPinned, description } = post;
   const formattedDate = getFormattedDate(date);
 
   return (
@@ -19,6 +19,7 @@ export default function ListItem({ post }: Props) {
         <BlogCard
           title={title}
           date={formattedDate}
+          author={author}
           tags={tags}
           description={description}
           cardImg={cardImg}

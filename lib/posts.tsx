@@ -36,6 +36,7 @@ export async function getPostByName(
   const { frontmatter, content } = await compileMDX<{
     title: string;
     date: string;
+    author: string;
     tags: string[];
     cardImg: string;
     description: string;
@@ -71,6 +72,7 @@ export async function getPostByName(
       id,
       title: frontmatter.title,
       date: frontmatter.date,
+      author: frontmatter.author,
       tags: frontmatter.tags,
       cardImg: frontmatter.cardImg,
       description: frontmatter.description,

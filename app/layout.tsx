@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="grid bg-stone-200 dark:bg-slate-800 ">
+    <html lang="en" className="grid bg-neutral-300 dark:bg-slate-800">
       <Analytics />
       <body>
         <Navbar />

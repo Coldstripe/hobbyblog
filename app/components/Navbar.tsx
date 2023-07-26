@@ -79,11 +79,12 @@ export default function Navbar() {
           priority={true}
           width={4000}
           height={300}
-          className="w-full max-h-fit"
+          className="w-full h-full"
           placeholder="blur"
           blurDataURL="/images/placeholder.png"
           src={"/images/siteheader.png"}
         />
+        <hr className="border-neutral-900 dark:border-white/90"/>
         <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed">
           <div className="flex h-full items-center justify-center">
             <div className="px-6 text-center text-white md:px-12 text-stroke">
