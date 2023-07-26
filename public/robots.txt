@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://coldstripe-d86c6.web.app/
+Host: https://coldstripe.vercel.app
 
 # Sitemaps
-Sitemap: https://coldstripe-d86c6.web.app/sitemap.xml
+Sitemap: https://coldstripe.vercel.app/sitemap.xml

@@ -3,7 +3,6 @@ import { getPostsMeta, getPostByName } from "@/lib/posts";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import "highlight.js/styles/github-dark.css"; //node_modules/highlight.js/styles
-import Image from "next/image";
 import MDXImage from "@/app/components/MDXImage";
 
 export const revalidate = 86400;
