@@ -1,33 +1,61 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { revalidatePath } from 'next/cache'
+import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
 export async function POST(request: NextRequest) {
-    const secret = request.headers.get('X-Hub-Signature')
-    const crypto = require('crypto');
-    if(!secret){
-        return new NextResponse(JSON.stringify({ message: 'Invalid Token' }), {
-            status: 401,
-            statusText: 'Unauthorized',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-    }
-    const compare = Buffer.byteLength(secret, 'utf-8') === Buffer.byteLength(`sha1=${process.env.GITHUB_SECRET_HASH}`, 'utf-8') && crypto.timingSafeEqual(Buffer.from(secret, 'utf-8'), Buffer.from(`sha1=${process.env.GITHUB_SECRET_HASH}`, 'utf-8'));
+  if (request.method != "POST") {
+    return new NextResponse(JSON.stringify({ message: "Invalid Token" }), {
+      status: 405,
+      statusText: "Method Not Allowed",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 
-    if (!compare) {
-        return new NextResponse(JSON.stringify({ message: 'Invalid Token' }), {
-            status: 401,
-            statusText: 'Unauthorized',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-    }
+  const crypto = require("crypto");
+  const signature = request.headers.get("X-Hub-Signature");
 
-    const path = request.nextUrl.searchParams.get('path') || '/'
+  if (!signature) {
+    return new NextResponse(JSON.stringify({ message: "Invalid Signature" }), {
+      status: 401,
+      statusText: "Unauthorized",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+  const hmac = crypto.createHmac("sha1", process.env.GITHUB_SECRET_TOKEN);
+  const calculatedSignature =
+    "sha1=" + hmac.update(JSON.stringify(request.body)).digest("hex");
 
-    revalidatePath(path)
+  const isBufferLengthEqual =
+    Buffer.byteLength(signature, "utf-8") ===
+    Buffer.byteLength(calculatedSignature, "utf-8");
+  const isTimingSafeEqual =
+    isBufferLengthEqual &&
+    crypto.timingSafeEqual(
+      Buffer.from(signature, "utf-8"),
+      Buffer.from(calculatedSignature, "utf-8")
+    );
 
-    return NextResponse.json({ revalidated: true })
+  if (!isTimingSafeEqual) {
+    return new NextResponse(JSON.stringify({ message: "Signature Mismatch" }), {
+      status: 401,
+      statusText: "Unauthorized",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+
+  const path = request.nextUrl.searchParams.get("path") || "/";
+
+  revalidatePath(path);
+
+  return NextResponse.json({ revalidated: true });
 }
