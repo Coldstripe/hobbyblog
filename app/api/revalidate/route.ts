@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
 
-export async function POST(request: NextRequest) {
+export async function GET(request: NextRequest) {
     const secret = request.nextUrl.searchParams.get('secret')
 
     if (secret !== process.env.MY_SECRET_TOKEN) {
