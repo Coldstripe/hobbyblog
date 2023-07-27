@@ -1,5 +1,4 @@
 import Posts from "./components/Posts";
-import ProfilePic from "./components/ProfilePic";
 
 export const revalidate = 86400;
 

@@ -4,6 +4,7 @@ import rehypeHighlight from "rehype-highlight/lib";
 import rehypeSlug from "rehype-slug";
 import Video from "@/app/components/Video";
 import MDXImage from "@/app/components/MDXImage";
+import Gallery from "@/app/components/Gallery";
 
 type Filetree = {
   tree: [
@@ -47,6 +48,7 @@ export async function getPostByName(
     components: {
       Video,
       MDXImage,
+      Gallery,
     },
     options: {
       parseFrontmatter: true,

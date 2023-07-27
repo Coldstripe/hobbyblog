@@ -1,6 +1,5 @@
 import { FaMapPin } from "react-icons/fa";
 import Image from "next/image";
-import BlogTags from "./BlogTags";
 
 type Props = {
   title: string;
@@ -12,6 +11,19 @@ type Props = {
   description: string;
 };
 export default function BlogCard(props: Props) {
+  
+  const BlogTags = () => {
+    return (
+      <ul>
+        {props.tags.map((value) => (
+          <span key={props.tags.indexOf(value)} className="transition ease-in-out delay-150 laptop:hover:-translate-y-1 inline-block bg-gray-200 dark:bg-stone-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            #{value.replaceAll('_',' ')}
+          </span>
+        ))}
+      </ul>
+    );
+  }
+
   return (
     <div className="relative max-w-sm bg-stone-700 dark:bg-stone-600 text-neutral-200 dark:text-white/90 rounded overflow-hidden shadow-lg hover:drop-shadow-lg">
       {props.cardImg && (
@@ -44,7 +56,7 @@ export default function BlogCard(props: Props) {
       </div>
       <div className="px-6 pt-4 pb-2">
         <hr className="mb-3 mt-0 dark:border-gray-200/90" />
-        <BlogTags tags={props.tags} />
+        <BlogTags />
       </div>
     </div>
   );
