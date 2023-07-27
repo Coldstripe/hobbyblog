@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
   }
 
   const crypto = require("crypto");
-  const signature = request.headers.get("X-Hub-Signature");
+  const signature = request.headers.get("X-Hub-Signature-256");
 
   if (!signature) {
     return new NextResponse(JSON.stringify({ message: "Invalid Signature" }), {
@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
       },
     });
   }
-  const hmac = crypto.createHmac("sha1", process.env.GITHUB_SECRET_TOKEN);
+  const hmac = crypto.createHmac("sha256", process.env.GITHUB_SECRET_TOKEN);
   const calculatedSignature =
     "sha1=" + hmac.update(JSON.stringify(request.body)).digest("hex");
 
