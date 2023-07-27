@@ -1,11 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
 export async function POST(request: NextRequest) {
   if (request.method != "POST") {
     return new NextResponse(JSON.stringify({ message: "Invalid Token" }), {
