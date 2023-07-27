@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
   }
   const hmac = crypto.createHmac("sha256", process.env.GITHUB_SECRET_TOKEN);
   const calculatedSignature =
-    "sha1=" + hmac.update(JSON.stringify(request.body)).digest("hex");
+    "sha256=" + hmac.update(JSON.stringify(request.body)).digest("hex");
 
   const isBufferLengthEqual =
     Buffer.byteLength(signature, "utf-8") ===
