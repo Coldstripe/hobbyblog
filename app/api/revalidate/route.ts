@@ -24,9 +24,15 @@ export async function POST(request: NextRequest) {
       },
     });
   }
+  const bodyJSON = await request.json();
+  const bodySansWhitespace = JSON.stringify(bodyJSON).replace(
+    "/^s+|s+$|s+(?=s)/g",
+    ""
+  );
+
   const hmac = crypto.createHmac("sha256", process.env.GITHUB_SECRET_TOKEN);
   const calculatedSignature =
-    "sha256=" + hmac.update(JSON.stringify(request.body)).digest("hex");
+    "sha256=" + hmac.update(bodySansWhitespace).digest("hex");
 
   const isBufferLengthEqual =
     Buffer.byteLength(signature, "utf-8") ===
