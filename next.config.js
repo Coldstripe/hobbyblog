@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["raw.githubusercontent.com","lostexodite.com"],
+    domains: ["raw.githubusercontent.com"],
     unoptimized: false,
   },
   remotePatterns: [
