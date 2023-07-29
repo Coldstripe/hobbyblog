@@ -45,9 +45,9 @@ export default async function TagPostList({ params: { tag } }: Props) {
 
     return (
         <>
-            <h2 className="text-3xl mt-4 mb-0">Results for: #{tag.replaceAll('_',' ')}</h2>
-            <section className="mt-6 mx-auto max-w-2xl">
-                <ul className="w-full list-none p-0">
+            <h2 className="mt-4 mb-0 text-3xl">Results for: #{tag.replaceAll('_',' ')}</h2>
+            <section className="max-w-2xl mx-auto mt-6">
+                <ul className="w-full p-0 list-none">
                     {tagPosts.map(post => (
                         <ListItem key={post.id} post={post} />
                     ))}

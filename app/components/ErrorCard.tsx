@@ -1,8 +1,11 @@
-export default function ErrorCard() {
+type Props = {
+  errorMsg: string
+}
+export default function ErrorCard(props: Props) {
   return (
-    <div className="container drop-shadow h-auto m-2">
-      <div className="relative bg-red-800 text-center text-white/90 font-bold rounded w-1/2 mx-auto">
-        ERROR
+    <div className="container h-auto m-2 drop-shadow">
+      <div className="relative w-1/2 mx-auto font-bold text-center bg-red-800 rounded text-white/90">
+        {props.errorMsg}
       </div>
     </div>
   );

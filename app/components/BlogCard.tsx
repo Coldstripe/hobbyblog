@@ -1,7 +1,8 @@
 import { FaMapPin } from "react-icons/fa";
 import Image from "next/image";
+import getFormattedTags from "@/lib/getFormattedTags";
 
-type Props = {
+type CardProps = {
   title: string;
   date: string;
   author: string;
@@ -10,25 +11,18 @@ type Props = {
   isPinned: boolean;
   description: string;
 };
-export default function BlogCard(props: Props) {
-  
-  const BlogTags = () => {
-    return (
-      <ul>
-        {props.tags.map((value) => (
-          <span key={props.tags.indexOf(value)} className="transition ease-in-out delay-150 laptop:hover:-translate-y-1 inline-block bg-gray-200 dark:bg-stone-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            #{value.replaceAll('_',' ')}
-          </span>
-        ))}
-      </ul>
-    );
-  }
 
+type TagProps = {
+  tags: string[],
+  postTitle: string
+}
+
+export default function BlogCard(props: CardProps) {
   return (
-    <div className="relative max-w-sm bg-stone-700 dark:bg-stone-600 text-neutral-200 dark:text-white/90 rounded overflow-hidden shadow-lg hover:drop-shadow-lg">
+    <div className="relative flex flex-col max-w-sm overflow-hidden rounded-lg shadow-lg flex-r bg-stone-700 dark:bg-stone-600 text-neutral-200 dark:text-white/90 hover:drop-shadow-lg">
       {props.cardImg && (
         <Image
-          className="w-full mt-0 mb-0"
+          className="top-0 w-full mt-0 mb-0"
           src={props.cardImg}
           alt={props.title}
           width={200}
@@ -36,28 +30,40 @@ export default function BlogCard(props: Props) {
           sizes="(min-width: 460px) 384px, 90vw"
         />
       )}
-      {props.isPinned && (
+      
+      <div className="px-6 pt-4">
+        <div className="mb-2 text-xl font-bold drop-shadow">
+          {props.title}
+          {props.isPinned && (
         <div
-          className="absolute right-5 top-5 animate-pulse text-amber-600"
+          className="float-right text-yellow-500 animate-pulse"
           title="Pinned"
         >
           <FaMapPin />
         </div>
       )}
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">
-          {props.title}
         </div>
         {props.description && (
-          <p className="text-gray-300/90 dark:text-gray-200 text-base font-medium mb-0">
+          <p className="my-0 text-sm font-light text-gray-300/90 dark:text-gray-200">
             {props.description}
           </p>
         )}
       </div>
-      <div className="px-6 pt-4 pb-2">
-        <hr className="mb-3 mt-0 dark:border-gray-200/90" />
-        <BlogTags />
+      <div className="m-5">
+        {props.tags && <BlogTags tags={getFormattedTags(props.tags, props.title)} postTitle={props.title}/>}
       </div>
     </div>
+  );
+}
+
+function BlogTags(props: TagProps) {
+  return (
+    <ul className="flex flex-row flex-wrap gap-1 p-1 m-0 justify-normal">
+      {props.tags.map((value, i) => (
+        <span key={i} id={`blogtag${i}-${props.postTitle}`} className="p-1 px-1.5 text-sm font-semibold flex-initial basis-auto text-gray-700 bg-gray-200 rounded-full dark:bg-stone-200 line-clamp-1">
+          #{value}
+        </span>
+      ))}
+    </ul>
   );
 }

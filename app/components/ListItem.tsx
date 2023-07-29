@@ -7,11 +7,12 @@ type Props = {
 };
 
 export default function ListItem({ post }: Props) {
-  const { id, title, date, author, tags, cardImg, isPinned, description } = post;
+  const { id, title, date, author, tags, cardImg, isPinned, description } =
+    post;
   const formattedDate = getFormattedDate(date);
 
   return (
-    <li className="mt-4 text-2xl font-thin text-gray-50 ">
+    <li className="h-full mt-4 text-2xl font-thin text-gray-50">
       <Link
         className="no-underline text-white/90 hover:text-white hover:drop-shadow-lg"
         href={`/posts/${id}`}

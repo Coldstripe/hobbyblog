@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import "tw-elements/dist/css/tw-elements.min.css";
-import DynamicNavbar from "./components/dynamic/DynamicNavbar";
+import Navbar from "./components/Navbar";
 import { Roboto } from "next/font/google";
 
 const roboto = Roboto({ weight: "400", subsets: ["latin"] });
@@ -21,12 +21,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="grid bg-neutral-300 dark:bg-slate-800 w-fit h-fit"
+      className=" bg-neutral-300 dark:bg-slate-800 text-neutral-900 dark:text-white/90"
     >
       <Analytics />
       <body className={roboto.className}>
-        <DynamicNavbar />
-        <main className="px-4 md:px-6 prose prose-xl prose-slate dark:prose-invert mx-auto">
+        <Navbar />
+        <main className="px-4 mx-auto mt-20 prose prose-xl md:px-6 prose-slate dark:prose-invert">
           {children}
         </main>
       </body>

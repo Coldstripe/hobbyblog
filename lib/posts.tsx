@@ -48,7 +48,7 @@ export async function getPostByName(
     components: {
       Video,
       MDXImage,
-      Gallery,
+      Gallery
     },
     options: {
       parseFrontmatter: true,
@@ -83,6 +83,8 @@ export async function getPostByName(
     },
     content,
   };
+
+  blogPostObj.meta.tags.sort((a, b) => a.localeCompare(b)); //sort tags alphabetically by default
 
   return blogPostObj;
 }
