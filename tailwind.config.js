@@ -25,8 +25,6 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/typography"),
-    require("@tailwindcss/aspect-ratio"),
-    require("tw-elements/dist/plugin.cjs")
-  ],
-  darkMode: "media"
+    require("@tailwindcss/aspect-ratio")
+  ]
 };

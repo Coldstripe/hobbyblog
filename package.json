@@ -33,7 +33,6 @@
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
     "sharp": "^0.32.4",
-    "tw-elements": "^1.0.0-beta2",
     "typescript": "5.1.6"
   },
   "devDependencies": {

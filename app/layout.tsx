@@ -1,7 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
-import "tw-elements/dist/css/tw-elements.min.css";
 import Navbar from "./components/Navbar";
 import { Roboto } from "next/font/google";
 
@@ -19,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
+    <html id="app"
       lang="en"
       className=" bg-neutral-300 dark:bg-slate-800 text-neutral-900 dark:text-white/90"
     >

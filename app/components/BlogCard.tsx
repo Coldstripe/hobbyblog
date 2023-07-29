@@ -13,8 +13,7 @@ type CardProps = {
 };
 
 type TagProps = {
-  tags: string[],
-  postTitle: string
+  tags: string[]
 }
 
 export default function BlogCard(props: CardProps) {
@@ -50,7 +49,7 @@ export default function BlogCard(props: CardProps) {
         )}
       </div>
       <div className="m-5">
-        {props.tags && <BlogTags tags={getFormattedTags(props.tags, props.title)} postTitle={props.title}/>}
+        {props.tags && <BlogTags tags={getFormattedTags(props.tags)}/>}
       </div>
     </div>
   );
@@ -60,7 +59,7 @@ function BlogTags(props: TagProps) {
   return (
     <ul className="flex flex-row flex-wrap gap-1 p-1 m-0 justify-normal">
       {props.tags.map((value, i) => (
-        <span key={i} id={`blogtag${i}-${props.postTitle}`} className="p-1 px-1.5 text-sm font-semibold flex-initial basis-auto text-gray-700 bg-gray-200 rounded-full dark:bg-stone-200 line-clamp-1">
+        <span key={i} className="p-1 px-1.5 text-sm font-semibold flex-initial basis-auto text-gray-700 bg-gray-200 rounded-full dark:bg-stone-200 line-clamp-1">
           #{value}
         </span>
       ))}

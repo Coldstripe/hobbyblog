@@ -59,16 +59,14 @@ export default async function Post({ params: { postId } }: Props) {
       <p className="mt-0 mb-0">{pubDate}</p>
       {meta.author && <sub className="mt-0">By {meta.author}</sub>}
       <MDXImage src={meta.cardImg} alt={meta.title} />
-
       <p className="mt-0">{meta.description}</p>
-      <hr className="my-1 border-neutral-900 dark:border-gray-200/90" />
+      <hr className="my-5 border-neutral-900 dark:border-white/90"/>
+      
       <article>{content}</article>
-      {tags && (
-        <hr className="mt-0 mb-4 border-neutral-900 dark:border-gray-200/90" />
-      )}
-      {tags && (
-        <div className="flex flex-row gap-4 pb-4">Tags:&nbsp;{tags}</div>
-      )}
+      
+      <hr className="my-5 border-neutral-900 dark:border-white/90"/>
+      {(meta.tags.length > 1) && <div className="flex flex-row flex-wrap justify-center gap-4 mb-5 line-clamp-1">Tags:&nbsp;{tags}</div>
+      }
     </>
   );
 }
