@@ -15,10 +15,11 @@ type Filetree = {
 };
 
 export async function getPostByName(
-  fileName: string
+  fileName: string,
+  repository: string
 ): Promise<BlogPost | null> {
   const res = await fetch(
-    `https://raw.githubusercontent.com/Coldstripe/blogposts/main/${fileName}`,
+    `https://raw.githubusercontent.com/Coldstripe/blogposts/${repository}/${fileName}`,
     {
       headers: {
         Accept: "application/vnd.github+json",
@@ -112,7 +113,7 @@ export async function getPostsMeta(): Promise<Meta[] | null> {
   const posts: Meta[] = [];
 
   for (const file of filesArray) {
-    const post = await getPostByName(file);
+    const post = await getPostByName(file, process.env.BLOG_POST_REPO!);
     if (post && !post.meta.isHidden) {
       const { meta } = post;
       posts.push(meta);
