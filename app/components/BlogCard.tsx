@@ -18,7 +18,7 @@ type TagProps = {
 
 export default function BlogCard(props: CardProps) {
   return (
-    <div className="relative flex flex-col max-w-sm overflow-hidden rounded-lg shadow-lg flex-r bg-stone-700 dark:bg-stone-600 text-neutral-200 dark:text-white/90 hover:drop-shadow-lg">
+    <div className="relative flex flex-col flex-grow-0 max-w-xs overflow-hidden rounded-lg shadow-lg flex-r bg-stone-700 dark:bg-stone-600 text-neutral-200 dark:text-white/90 hover:drop-shadow-lg">
       {props.cardImg && (
         <Image
           className="top-0 w-full mt-0 mb-0"

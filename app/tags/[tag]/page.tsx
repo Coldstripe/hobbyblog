@@ -44,7 +44,7 @@ export default async function TagPostList({ params: { tag } }: Props) {
     }
 
     return (
-        <>
+        <div className="prose dark:prose-invert">
             <h2 className="mt-4 mb-0 text-3xl">Results for: #{tag.replaceAll('_',' ')}</h2>
             <section className="max-w-2xl mx-auto mt-6">
                 <ul className="w-full p-0 list-none">
@@ -53,6 +53,6 @@ export default async function TagPostList({ params: { tag } }: Props) {
                     ))}
                 </ul>
             </section>
-        </>
+        </div>
     )
 }

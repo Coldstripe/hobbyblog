@@ -16,9 +16,9 @@ export default function Error({
     }, [error]);
 
     return (
-        <main className="bg-slate-200 mx-auto max-w-lg py-1 px-4 min-h-screen">
+        <main className="flex flex-col max-w-lg min-h-screen py-1 mx-auto prose dark:prose-invert">
             <h2 className="my-4 text-2xl font-bold">Something went wrong!</h2>
-            <button className="mb-4 p-4 bg-red-500 text-white rounded-xl"
+            <button className="p-4 mb-4 font-mono text-xl font-bold text-white uppercase bg-red-600 hover:bg-red-500 rounded-xl"
                 onClick={
                     // Attempt to recover by trying to re-render the segment
                     () => reset()
@@ -27,7 +27,7 @@ export default function Error({
                 Try again
             </button>
             <p className="text-xl">
-                Or go back to <Link href="/" className="underline">Home 🏠</Link>
+                Or go back to <Link href="/" className="underline">Home</Link>.
             </p>
         </main>
     );

@@ -9,7 +9,7 @@ const roboto = Roboto({ weight: "400", subsets: ["latin"] });
 //By Cameron Thacker
 export const metadata: Metadata = {
   title: "Coldstripe's Hobby Blog",
-  description: "A completely normal hobby blog.",
+  description: "Legendary.",
 };
 
 export default function RootLayout({
@@ -20,12 +20,12 @@ export default function RootLayout({
   return (
     <html id="app"
       lang="en"
-      className=" bg-neutral-300 dark:bg-slate-800 text-neutral-900 dark:text-white/90"
+      className="dark"
     >
       <Analytics />
-      <body className={roboto.className}>
+      <body className={roboto.className+"bg-neutral-300 dark:bg-slate-800 text-neutral-900 dark:text-white/90 prose-ul:leading-tight prose-a:text-yellow-500 prose-a:no-underline hover:prose-a:underline"}>
         <Navbar />
-        <main className="px-4 mx-auto mt-20 prose prose-xl md:px-6 prose-slate dark:prose-invert">
+        <main className="flex flex-auto px-4 mx-auto mt-20 prose prose-xl md:px-6 place-content-center">
           {children}
         </main>
       </body>

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import "highlight.js/styles/github-dark.css"; //node_modules/highlight.js/styles
 import MDXImage from "@/app/components/MDXImage";
-import Gallery from "@/app/components/Gallery";
 
 export const revalidate = 86400;
 
@@ -54,19 +53,23 @@ export default async function Post({ params: { postId } }: Props) {
   ));
 
   return (
-    <>
-      <h2 className="mt-4 mb-0 text-3xl ">{meta.title}</h2>
-      <p className="mt-0 mb-0">{pubDate}</p>
-      {meta.author && <sub className="mt-0">By {meta.author}</sub>}
+    <div className="prose dark:prose-invert lg:prose-xl">
+      <h2 className="my-1 text-3xl">{meta.title}</h2>
+      <section>{pubDate}</section>
+      {meta.author && <sub>By {meta.author}</sub>}
       <MDXImage src={meta.cardImg} alt={meta.title} />
-      <p className="mt-0">{meta.description}</p>
-      <hr className="my-5 border-neutral-900 dark:border-white/90"/>
-      
+      <section>{meta.description}</section>
+      <hr className="my-5 border-neutral-900 dark:border-white/70" />
+
       <article>{content}</article>
-      
-      <hr className="my-5 border-neutral-900 dark:border-white/90"/>
-      {(meta.tags.length > 1) && <div className="flex flex-row flex-wrap justify-center gap-4 mb-5 line-clamp-1">Tags:&nbsp;{tags}</div>
-      }
-    </>
+
+      <hr className="my-5 border-neutral-900 dark:border-white/70" />
+      {meta.tags && (
+        <div className="flex flex-row flex-wrap justify-center gap-4 pb-5 line-clamp-1">
+          <span className="font-medium">Tags:</span>
+          {tags}
+        </div>
+      )}
+    </div>
   );
 }

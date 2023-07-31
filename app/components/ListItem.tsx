@@ -12,9 +12,9 @@ export default function ListItem({ post }: Props) {
   const formattedDate = getFormattedDate(date);
 
   return (
-    <li className="h-full mt-4 text-2xl font-thin text-gray-50">
+    <li className="w-full h-full mt-4 text-2xl font-thin text-gray-50">
       <Link
-        className="no-underline text-white/90 hover:text-white hover:drop-shadow-lg"
+        className="!font-sans !no-underline text-white/90 hover:text-white hover:drop-shadow-lg"
         href={`/posts/${id}`}
       >
         <BlogCard
@@ -27,7 +27,6 @@ export default function ListItem({ post }: Props) {
           isPinned={isPinned}
         />
       </Link>
-      <br />
     </li>
   );
 }
