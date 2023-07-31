@@ -8,17 +8,17 @@ export default function Navbar() {
         <li>
           <Link
             href="/"
-            className="text-xl font-normal no-underline hover:text-yellow-600 hover:font-medium hover:drop-shadow list-item"
+            className="text-xl font-medium no-underline hover:text-yellow-600 hover:drop-shadow list-item"
           >
             Home
           </Link>
         </li>
         <li>
           <Link
-            href="/posts/about-me"
-            className="text-xl font-normal no-underline hover:text-yellow-600 hover:font-medium hover:drop-shadow list-item"
+            href="/posts"
+            className="text-xl font-medium no-underline hover:text-yellow-600 hover:drop-shadow list-item"
           >
-            About Me
+            Posts
           </Link>
         </li>
       </ol>
