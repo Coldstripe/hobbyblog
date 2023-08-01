@@ -5,7 +5,7 @@ export const revalidate = 86400;
 export default function Home() {
   return (
     <div className="prose justify-normal lg:prose-xl dark:prose-invert">
-      <p>
+      <div>
         Hello, my name is&nbsp;
         <span className="font-bold text-black dark:text-white">Cameron</span>! I
         am a software developer with experience in:
@@ -16,13 +16,13 @@ export default function Home() {
           <li>Typescript</li>
           <li>Next.js</li>
         </ul>
-      </p>
+      </div>
       <p>
         I started this website as a side project for fun, as a means to host my
         tabletop miniatures hobby. In the future it may expand to encompass
         other things.
       </p>
-      <p>
+      <div>
         This website is hosted on&nbsp;
         <Link
           href="https://vercel.com/"
@@ -31,8 +31,8 @@ export default function Home() {
           className="font-mono text-yellow-500 no-underline hover:underline"
         >
           Vercel
-        </Link>&nbsp;
-        and built with&nbsp;
+        </Link>
+        &nbsp;and built with&nbsp;
         <Link
           href="https://nextjs.org/"
           target="_blank"
@@ -40,8 +40,8 @@ export default function Home() {
           className="font-mono text-yellow-500 no-underline hover:underline"
         >
           Next.js
-        </Link>&nbsp;
-        and&nbsp;
+        </Link>
+        &nbsp;and&nbsp;
         <Link
           href="https://tailwindcss.com/"
           target="_blank"
@@ -51,12 +51,12 @@ export default function Home() {
           Tailwind
         </Link>
         .
-      </p>
-      <p>
-        Credit to <b>Dave Gray</b> for his awesome Next.js tutorial.
+      </div>
+      <div>
+        Credit to <b>Dave Gray</b> for his awesome Next.js tutorials.
         <br />
         <Video id="6ih_3m_UPKg" />
-      </p>
+      </div>
     </div>
   );
 }
