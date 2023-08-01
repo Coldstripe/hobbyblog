@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     ""
   );
 
-  const hmac = crypto.createHmac("sha256", process.env.GITHUB_SECRET_TOKEN);
+  const hmac = crypto.createHmac("sha256", process.env.GITHUB_WEBHOOK_SECRET);
   const calculatedSignature =
     "sha256=" + hmac.update(bodySansWhitespace).digest("hex");
 
